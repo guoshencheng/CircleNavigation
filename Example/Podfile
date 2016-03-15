@@ -1,12 +1,2 @@
 source 'https://github.com/CocoaPods/Specs.git'
-use_frameworks!
-
-target 'CircleNavigation_Example', :exclusive => true do
-  pod 'CircleNavigation', :path => '../'
-end
-
-target 'CircleNavigation_Tests', :exclusive => true do
-  pod 'CircleNavigation', :path => '../'
-
-  
-end
+pod 'CircleNavigation', :path => '../'

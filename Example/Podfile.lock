@@ -1,0 +1,20 @@
+PODS:
+  - CircleNavigation (0.1.0):
+    - Masonry
+    - pop
+  - Masonry (0.6.4)
+  - pop (1.0.9)
+
+DEPENDENCIES:
+  - CircleNavigation (from `../`)
+
+EXTERNAL SOURCES:
+  CircleNavigation:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CircleNavigation: 9793d77ee24b1cebf7da4dbdaa11f362f66f5dfa
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+
+COCOAPODS: 0.39.0

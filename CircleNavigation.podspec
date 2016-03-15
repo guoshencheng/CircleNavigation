@@ -30,11 +30,9 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'CircleNavigation' => ['Pod/Assets/*.png']
-  }
-
+  s.resources = ['Pod/Assets/CircleNavigationItem.xib']
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Masonry'
+  s.dependency 'pop'
 end

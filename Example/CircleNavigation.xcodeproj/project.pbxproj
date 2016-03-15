@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EEAFFF91C97ABB200E6B0A2 /* CGViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2EEAFFF81C97ABB200E6B0A2 /* CGViewController.xib */; };
+		2EEAFFFB1C97AD8600E6B0A2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EEAFFFA1C97AD8600E6B0A2 /* Launch Screen.storyboard */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -21,8 +23,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		7FB101C30B3E832A8B15A1DF /* Pods_CircleNavigation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05869550377B09D77C41C372 /* Pods_CircleNavigation_Tests.framework */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		CF4F4150ADA81DFFF773EF1C /* Pods_CircleNavigation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0C1CBBFBEBFBDF54D041DE /* Pods_CircleNavigation_Example.framework */; };
+		82AC5E6ED12A4E495FA1301E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D6805F1E5246D893460916 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		05869550377B09D77C41C372 /* Pods_CircleNavigation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CircleNavigation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29D6805F1E5246D893460916 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EEAFFF81C97ABB200E6B0A2 /* CGViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGViewController.xib; sourceTree = "<group>"; };
+		2EEAFFFA1C97AD8600E6B0A2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		300C65D89F79D2FF9BAA6692 /* Pods-CircleNavigation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleNavigation_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircleNavigation_Example/Pods-CircleNavigation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		33088939492A95BD1A884A61 /* CircleNavigation.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CircleNavigation.podspec; path = ../CircleNavigation.podspec; sourceTree = "<group>"; };
 		4F116101058C60FA360896E1 /* Pods-CircleNavigation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleNavigation_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleNavigation_Example/Pods-CircleNavigation_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -61,8 +65,9 @@
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
+		661167B7C8A4AC203FBDDEC6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7A1A158BB72F48E69379778F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		81796F4155A0B474C23CBEFE /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AA0C1CBBFBEBFBDF54D041DE /* Pods_CircleNavigation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CircleNavigation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A17323DF7301BCA889859E /* Pods-CircleNavigation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircleNavigation_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircleNavigation_Tests/Pods-CircleNavigation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +80,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				CF4F4150ADA81DFFF773EF1C /* Pods_CircleNavigation_Example.framework in Frameworks */,
+				82AC5E6ED12A4E495FA1301E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +105,8 @@
 				300C65D89F79D2FF9BAA6692 /* Pods-CircleNavigation_Example.release.xcconfig */,
 				D6A17323DF7301BCA889859E /* Pods-CircleNavigation_Tests.debug.xcconfig */,
 				55E08C1642C71530C2DFD78A /* Pods-CircleNavigation_Tests.release.xcconfig */,
+				7A1A158BB72F48E69379778F /* Pods.debug.xcconfig */,
+				661167B7C8A4AC203FBDDEC6 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -134,6 +141,7 @@
 				6003F5AF195388D20070C39A /* XCTest.framework */,
 				AA0C1CBBFBEBFBDF54D041DE /* Pods_CircleNavigation_Example.framework */,
 				05869550377B09D77C41C372 /* Pods_CircleNavigation_Tests.framework */,
+				29D6805F1E5246D893460916 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,11 +151,12 @@
 			children = (
 				6003F59C195388D20070C39A /* CGAppDelegate.h */,
 				6003F59D195388D20070C39A /* CGAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* CGViewController.h */,
 				6003F5A6195388D20070C39A /* CGViewController.m */,
+				2EEAFFF81C97ABB200E6B0A2 /* CGViewController.xib */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				2EEAFFFA1C97AD8600E6B0A2 /* Launch Screen.storyboard */,
 			);
 			name = "Example for CircleNavigation";
 			path = CircleNavigation;
@@ -276,8 +285,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				2EEAFFF91C97ABB200E6B0A2 /* CGViewController.xib in Resources */,
+				2EEAFFFB1C97AD8600E6B0A2 /* Launch Screen.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +315,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircleNavigation_Example/Pods-CircleNavigation_Example-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		28A38444B43713E5CD206A37 /* Copy Pods Resources */ = {
@@ -380,7 +390,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircleNavigation_Example/Pods-CircleNavigation_Example-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -509,13 +519,13 @@
 		};
 		6003F5C0195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F116101058C60FA360896E1 /* Pods-CircleNavigation_Example.debug.xcconfig */;
+			baseConfigurationReference = 7A1A158BB72F48E69379778F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CircleNavigation/CircleNavigation-Prefix.pch";
 				INFOPLIST_FILE = "CircleNavigation/CircleNavigation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -525,13 +535,13 @@
 		};
 		6003F5C1195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 300C65D89F79D2FF9BAA6692 /* Pods-CircleNavigation_Example.release.xcconfig */;
+			baseConfigurationReference = 661167B7C8A4AC203FBDDEC6 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CircleNavigation/CircleNavigation-Prefix.pch";
 				INFOPLIST_FILE = "CircleNavigation/CircleNavigation-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -541,7 +551,6 @@
 		};
 		6003F5C3195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6A17323DF7301BCA889859E /* Pods-CircleNavigation_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -565,7 +574,6 @@
 		};
 		6003F5C4195388D20070C39A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55E08C1642C71530C2DFD78A /* Pods-CircleNavigation_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -14,16 +14,12 @@
 
 @implementation CGViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
++ (instancetype)create {
+    return [[CGViewController alloc] initWithNibName:@"CGViewController" bundle:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
 @end

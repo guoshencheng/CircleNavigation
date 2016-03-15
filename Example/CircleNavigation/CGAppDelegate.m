@@ -7,40 +7,57 @@
 //
 
 #import "CGAppDelegate.h"
+#import "CGViewController.h"
+#import <CircleNavigation.h>
 
-@implementation CGAppDelegate
+@interface CGAppDelegate () <CircleNavigationDatasource, CircleNavigationDelegate>
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
+@end
+
+@implementation CGAppDelegate {
+    UINavigationController *navigationController;
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    CGViewController *viewController = [CGViewController create];
+    navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window.rootViewController = navigationController;
+    CircleNavigation *circleNavigation = [CircleNavigation sharedCircleNavigation];
+    circleNavigation.delegate = self;
+    circleNavigation.datasource = self;
+    [self.window addSubview:circleNavigation];
+    [circleNavigation mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@0);
+        make.right.equalTo(@0);
+        make.top.equalTo(@0);
+        make.bottom.equalTo(@0);
+    }];
+    NavigationItemModule *module = [NavigationItemModule new];
+    module.iconImageName = @"test_image";
+    module.iconClickedImageName = @"test_image";
+    module.text = @"description";
+    [circleNavigation registItemModule:module forKey:@"item"];
+    [circleNavigation resetItems];
+    [self.window makeKeyAndVisible];
+    [self.window bringSubviewToFront:circleNavigation];
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+- (NSString *)circleNavigationIconImage:(CircleNavigation *)circle atProgress:(CGFloat)progress {
+    return @"test_image";
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+- (NSInteger)numberOfItemsInCircleNavigation:(CircleNavigation *)circleNavigation {
+    return 4;
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+- (NSString *)circleNavigation:(CircleNavigation *)circleNavigation itemKeyAtIndex:(NSInteger)index {
+    return @"item";
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)circleNavigation:(CircleNavigation *)circleNavigation didClickItemAtIndex:(NSInteger)index {
+    NSLog(@"%@", @(index));
 }
 
 @end

@@ -1,0 +1,31 @@
+{
+  "name": "CircleNavigation",
+  "version": "0.1.0",
+  "summary": "A short description of CircleNavigation.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/CircleNavigation",
+  "license": "MIT",
+  "authors": {
+    "guoshencheng": "648772021@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/CircleNavigation.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resources": [
+    "Pod/Assets/CircleNavigationItem.xib"
+  ],
+  "dependencies": {
+    "Masonry": [
+
+    ],
+    "pop": [
+
+    ]
+  }
+}

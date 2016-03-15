@@ -10,4 +10,6 @@
 
 @interface CGViewController : UIViewController
 
++ (instancetype)create;
+
 @end
