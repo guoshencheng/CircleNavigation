@@ -103,6 +103,16 @@
     }
 }
 
+- (void)setTransitionProgress:(CGFloat)transitionProgress {
+    _transitionProgress = transitionProgress;
+    if ([self.datasource respondsToSelector:@selector(circleNavigationIconImage:atProgress:)]) {
+        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconImage:self atProgress:transitionProgress]] forState:UIControlStateNormal];
+    }
+    if ([self.datasource respondsToSelector:@selector(circleNavigationIconClickedImage:atProgress:)]) {
+        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconClickedImage:self atProgress:transitionProgress]] forState:UIControlStateHighlighted];
+    }
+}
+
 #pragma mark - Actions
 
 - (void)didClickMainButton {
