@@ -58,6 +58,7 @@
 
 - (void)circleNavigation:(CircleNavigation *)circleNavigation didClickItemAtIndex:(NSInteger)index {
     NSLog(@"%@", @(index));
+    [navigationController pushViewController:[CGViewController create] animated:YES];
 }
 
 @end

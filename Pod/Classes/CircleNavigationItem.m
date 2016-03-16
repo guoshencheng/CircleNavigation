@@ -80,17 +80,27 @@ CGFloat getLayoutConstant(MASConstraint* constraint) {
     if (self.labelViewLeftConstraint.constant > 20) {
         self.labelViewLeftConstraint.constant = 20;
     }
+    [self pop_removeAnimationForKey:kCircleNavigationPopSpringAnimation];
     [self baseAnimatePopLabelViewWithBlock:^(POPAnimation *anim, BOOL finished) {
-        POPSpringAnimation *animation = [self popSpringAnimation];
-        animation.toValue = @(0);
-        animation.springBounciness = 0.0f;
-        animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.transitionProgress = 0;
+        } completion:^(BOOL finished) {
             if (self.packUpAnimationCompletion) {
                 self.packUpAnimationCompletion(self.tag);
                 self.packUpAnimationCompletion = nil;
             }
             self.hidden = YES;
-        };
+        }];
+//        POPSpringAnimation *animation = [self popSpringAnimation];
+//        animation.toValue = @(0);
+//        animation.springBounciness = 0.0f;
+//        animation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+//            if (self.packUpAnimationCompletion) {
+//                self.packUpAnimationCompletion(self.tag);
+//                self.packUpAnimationCompletion = nil;
+//            }
+//            self.hidden = YES;
+//        };
     }];
 }
 
@@ -124,6 +134,7 @@ CGFloat getLayoutConstant(MASConstraint* constraint) {
     _transitionProgress = transitionProgress;
     [self updateCurrentPosition];
     [self updateCurrentAlpha];
+    [self layoutIfNeeded];
 }
 
 - (void)updateCurrentPosition {
