@@ -40,6 +40,8 @@
 
 + (instancetype)sharedCircleNavigation;
 + (instancetype)create;
+- (void)showWithAnimation:(BOOL)animation;
+- (void)hideWithAnimation:(BOOL)animation;
 - (void)resetItems;
 - (void)reset;
 - (void)registItemModule:(NavigationItemModule *)module forKey:(NSString *)key;

@@ -75,6 +75,14 @@
     return circleNavigation;
 }
 
+- (void)showWithAnimation:(BOOL)animation {
+    self.hidden = NO;
+}
+
+- (void)hideWithAnimation:(BOOL)animation {
+    self.hidden = YES;
+}
+
 - (void)resetItems {
     [self clear];
     [self reset];
