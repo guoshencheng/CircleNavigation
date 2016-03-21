@@ -59,11 +59,15 @@ CGFloat getLayoutConstant(MASConstraint* constraint) {
 }
 
 - (void)setupWithImage:(UIImage *)image highLightImage:(UIImage *)highLightImage title:(NSString *)title {
+    [self updateWithImage:image highLightImage:highLightImage title:title];
+    [self configureConstraint];
+}
+
+- (void)updateWithImage:(UIImage *)image highLightImage:(UIImage *)highLightImage title:(NSString *)title {
     self.itemImageView.backgroundColor = [UIColor clearColor];
     [self.itemButton setImage:image forState:UIControlStateNormal];
     self.label.text = title;
     [self.itemButton setImage:highLightImage forState:UIControlStateHighlighted];
-    [self configureConstraint];
 }
 
 - (void)animateToTargetPostion {

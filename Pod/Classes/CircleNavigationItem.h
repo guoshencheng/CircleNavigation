@@ -30,6 +30,7 @@ typedef void(^PackUpAnimationCompletion)(NSInteger index);
 
 + (instancetype)create;
 - (void)setupWithImage:(UIImage *)image highLightImage:(UIImage *)highLightImage title:(NSString *)title;
+- (void)updateWithImage:(UIImage *)image highLightImage:(UIImage *)highLightImage title:(NSString *)title;
 - (void)animateToTargetPostion;
 - (void)animateToOriginPostion;
 

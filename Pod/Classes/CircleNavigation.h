@@ -46,6 +46,7 @@
 - (void)reset;
 - (void)registItemModule:(NavigationItemModule *)module forKey:(NSString *)key;
 - (NavigationItemModule *)dequeueModuleWithKey:(NSString *)key;
+- (void)resetItemImage:(UIImage *)image clickedImage:(UIImage *)clickedImage title:(NSString *)title atIndex:(NSInteger)index;
 
 @end
 

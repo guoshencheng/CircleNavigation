@@ -102,6 +102,11 @@
     [self.itemModuleCache setObject:module forKey:key];
 }
 
+- (void)resetItemImage:(UIImage *)image clickedImage:(UIImage *)clickedImage title:(NSString *)title atIndex:(NSInteger)index {
+    CircleNavigationItem *item = [self.items objectAtIndex:index];
+    [item updateWithImage:image highLightImage:clickedImage title:title];
+}
+
 - (NavigationItemModule *)dequeueModuleWithKey:(NSString *)key {
     if ([self.itemModuleCache objectForKey:key]) {
         return [self.itemModuleCache objectForKey:key];
