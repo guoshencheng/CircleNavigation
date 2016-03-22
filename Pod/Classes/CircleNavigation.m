@@ -8,6 +8,52 @@
 
 #import "Masonry.h"
 #import "CircleNavigation.h"
+#import <objc/runtime.h>
+
+#define BLOCK_KEY @"BLOCK_KEY"
+#define CONTENTS  @"contents"
+@implementation UIImageView (CircleNavigation)
+
+- (void)setblock:(Block)block {
+    objc_setAssociatedObject(self, (__bridge const void *)(BLOCK_KEY), block, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (Block)block {
+    return objc_getAssociatedObject(self, (__bridge const void *)(BLOCK_KEY));
+}
+
+- (void)startAnimatingWithCompletionBlock:(Block)block {
+    [self startAnimatingWithCGImages:getCGImagesArray(self.animationImages) CompletionBlock:block];
+}
+
+- (void)startAnimatingWithCGImages:(NSArray*)cgImages CompletionBlock:(Block)block {
+    [self setblock:block];
+    CAKeyframeAnimation *anim = [CAKeyframeAnimation animation];
+    [anim setKeyPath:CONTENTS];
+    [anim setValues:cgImages];
+    [anim setRepeatCount:self.animationRepeatCount];
+    [anim setDuration:self.animationDuration];
+    anim.delegate = self;
+    
+    CALayer *ImageLayer = self.layer;
+    [ImageLayer addAnimation:anim forKey:nil];
+}
+
+NSArray *getCGImagesArray(NSArray* UIImagesArray) {
+    NSMutableArray* cgImages;
+    @autoreleasepool {
+        cgImages = [[NSMutableArray alloc] init];
+        for (UIImage* image in UIImagesArray)
+            [cgImages addObject:(id)image.CGImage];
+    }
+    return cgImages;
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    Block block_ = [self block];
+    if (block_)block_(flag);
+}
+@end
 
 @implementation NavigationItemModule
 
@@ -98,11 +144,12 @@
 
 - (void)playAnimationForKey:(NSString *)key {
     NSArray *sprites = [self.spritesCache objectForKey:key];
-    self.mainButton.imageView.image = [sprites firstObject];
     [self.mainButton.imageView setAnimationDuration:0.3];
     [self.mainButton.imageView setAnimationImages:sprites];
     [self.mainButton.imageView setAnimationRepeatCount:1];
-    [self.mainButton.imageView startAnimating];
+    [self.mainButton.imageView startAnimatingWithCompletionBlock:^(BOOL success) {
+        self.mainButton.imageView.image = [sprites firstObject];
+    }];
 }
 
 - (void)registSprites:(NSArray *)sprites forKey:(NSString *)key {

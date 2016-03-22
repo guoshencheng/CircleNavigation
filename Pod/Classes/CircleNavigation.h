@@ -8,6 +8,13 @@
 
 #import "CircleNavigationItem.h"
 
+typedef void (^Block)(BOOL success);
+@interface UIImageView (CircleNavigation)
+
+-(void)startAnimatingWithCompletionBlock:(Block)block;
+
+@end
+
 @protocol CircleNavigationDelegate;
 @protocol CircleNavigationDatasource;
 
