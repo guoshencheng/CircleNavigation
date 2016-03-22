@@ -42,6 +42,7 @@
 @property (strong, nonatomic) UIButton *backgroundButton;
 
 @property (strong, nonatomic) NSMutableDictionary *itemModuleCache;
+@property (strong, nonatomic) NSMutableDictionary *spritesCache;
 @property (strong, nonatomic) NSMutableArray *items;
 @property (assign, nonatomic) BOOL isPackUp;
 
@@ -93,6 +94,22 @@
     [self configureMainButton];
     [self configureBackgroundButton];
     self.isPackUp = YES;
+}
+
+- (void)playAnimationForKey:(NSString *)key {
+    NSArray *sprites = [self.spritesCache objectForKey:key];
+    self.mainButton.imageView.image = [sprites firstObject];
+    [self.mainButton.imageView setAnimationDuration:0.3];
+    [self.mainButton.imageView setAnimationImages:sprites];
+    [self.mainButton.imageView setAnimationRepeatCount:1];
+    [self.mainButton.imageView startAnimating];
+}
+
+- (void)registSprites:(NSArray *)sprites forKey:(NSString *)key {
+    if (!self.spritesCache) {
+        self.spritesCache = [NSMutableDictionary dictionary];
+    }
+    [self.spritesCache setObject:sprites forKey:key];
 }
 
 - (void)registItemModule:(NavigationItemModule *)module forKey:(NSString *)key {
