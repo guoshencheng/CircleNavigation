@@ -122,12 +122,10 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
     return circleNavigation;
 }
 
-- (void)showWithAnimation:(BOOL)animation {
-    self.hidden = NO;
-}
-
-- (void)hideWithAnimation:(BOOL)animation {
-    self.hidden = YES;
+- (void)reset {
+    [self configureMainButton];
+    [self configureBackgroundButton];
+    self.isPackUp = YES;
 }
 
 - (void)resetItems {
@@ -136,10 +134,12 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
     [self generateAllItems];
 }
 
-- (void)reset {
-    [self configureMainButton];
-    [self configureBackgroundButton];
-    self.isPackUp = YES;
+- (void)showWithAnimation:(BOOL)animation {
+    self.hidden = NO;
+}
+
+- (void)hideWithAnimation:(BOOL)animation {
+    self.hidden = YES;
 }
 
 - (void)playAnimationForKey:(NSString *)key expand:(BOOL)expand {
@@ -149,10 +149,17 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
     self.mainButton.imageView.image = [sprites lastObject];
     [self.mainButton.imageView startAnimatingWithCompletionBlock:^(BOOL success) {
         self.mainButton.imageView.image = [sprites lastObject];
+        if (!expand) {
+            [self resetMainButton];
+        }
     }];
     [UIView animateWithDuration:0.1 animations:^{
         self.mainButton.transform = expand ? CGAffineTransformMakeScale(1.2, 1.2) : CGAffineTransformIdentity;
     } completion:nil];
+}
+
+- (void)swichMainButtonImage:(UIImage *)image {
+    self.mainButton.imageView.image = image;
 }
 
 - (void)registSprites:(NSArray *)sprites forKey:(NSString *)key {
@@ -183,16 +190,6 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
     }
 }
 
-- (void)setTransitionProgress:(CGFloat)transitionProgress {
-    _transitionProgress = transitionProgress;
-    if ([self.datasource respondsToSelector:@selector(circleNavigationIconImage:atProgress:)]) {
-        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconImage:self atProgress:transitionProgress]] forState:UIControlStateNormal];
-    }
-    if ([self.datasource respondsToSelector:@selector(circleNavigationIconClickedImage:atProgress:)]) {
-        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconClickedImage:self atProgress:transitionProgress]] forState:UIControlStateHighlighted];
-    }
-}
-
 #pragma mark - Actions
 
 - (void)didClickMainButton {
@@ -219,11 +216,19 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 
 #pragma mark - Private Method
 
+- (void)resetMainButton {
+    if ([self.datasource respondsToSelector:@selector(circleNavigationIconImage:)]) {
+        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconImage:self]] forState:UIControlStateNormal];
+    }
+    if ([self.datasource respondsToSelector:@selector(circleNavigationIconClickedImage:)]) {
+        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconClickedImage:self]] forState:UIControlStateHighlighted];
+    }
+}
+
 - (void)setup {
     [self addBackgroundButton];
     [self addMainButton];
     [self reset];
-    self.transitionProgress = 0;
 }
 
 - (void)clear {
@@ -281,12 +286,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 }
 
 - (void)configureMainButton {
-    if ([self.datasource respondsToSelector:@selector(circleNavigationIconImage:atProgress:)]) {
-        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconImage:self atProgress:self.transitionProgress]] forState:UIControlStateNormal];
-    }
-    if ([self.datasource respondsToSelector:@selector(circleNavigationIconClickedImage:atProgress:)]) {
-        [self.mainButton setImage:[UIImage imageNamed:[self.datasource circleNavigationIconClickedImage:self atProgress:self.transitionProgress]] forState:UIControlStateHighlighted];
-    }
+    [self resetMainButton];
     CircleNavigationConfig *config = [CircleNavigationConfig sharedConfig];
     CGSize size = config.iconSize;
     [self.mainButton mas_remakeConstraints:^(MASConstraintMaker *make) {
