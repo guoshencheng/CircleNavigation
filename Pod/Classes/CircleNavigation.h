@@ -52,7 +52,7 @@ typedef void (^Block)(BOOL success);
 - (void)resetItems;
 - (void)reset;
 - (void)registSprites:(NSArray *)sprites forKey:(NSString *)key;
-- (void)playAnimationForKey:(NSString *)key;
+- (void)playAnimationForKey:(NSString *)key expand:(BOOL)expand;
 - (void)registItemModule:(NavigationItemModule *)module forKey:(NSString *)key;
 - (NavigationItemModule *)dequeueModuleWithKey:(NSString *)key;
 - (void)resetItemImage:(UIImage *)image clickedImage:(UIImage *)clickedImage title:(NSString *)title atIndex:(NSInteger)index;

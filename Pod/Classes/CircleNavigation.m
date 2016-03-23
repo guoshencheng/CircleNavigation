@@ -142,14 +142,17 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
     self.isPackUp = YES;
 }
 
-- (void)playAnimationForKey:(NSString *)key {
+- (void)playAnimationForKey:(NSString *)key expand:(BOOL)expand {
     NSArray *sprites = [self.spritesCache objectForKey:key];
     [self.mainButton.imageView setAnimationDuration:0.3];
     [self.mainButton.imageView setAnimationImages:sprites];
-    [self.mainButton.imageView setAnimationRepeatCount:1];
+    self.mainButton.imageView.image = [sprites lastObject];
     [self.mainButton.imageView startAnimatingWithCompletionBlock:^(BOOL success) {
-        self.mainButton.imageView.image = [sprites firstObject];
+        self.mainButton.imageView.image = [sprites lastObject];
     }];
+    [UIView animateWithDuration:0.1 animations:^{
+        self.mainButton.transform = expand ? CGAffineTransformMakeScale(1.2, 1.2) : CGAffineTransformIdentity;
+    } completion:nil];
 }
 
 - (void)registSprites:(NSArray *)sprites forKey:(NSString *)key {
