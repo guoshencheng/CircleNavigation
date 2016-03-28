@@ -306,7 +306,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 }
 
 - (void)configureBackgroundButton {
-    self.backgroundButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
+    self.backgroundButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     [self.backgroundButton mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(@0);
         make.trailing.equalTo(@0);
