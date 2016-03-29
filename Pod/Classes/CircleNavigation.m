@@ -147,8 +147,8 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
     [self.mainButton.imageView setAnimationDuration:0.3];
     [self.mainButton.imageView setAnimationImages:sprites];
     self.mainButton.imageView.image = [sprites lastObject];
+    [self.mainButton setImage:[sprites lastObject] forState:UIControlStateNormal];
     [self.mainButton.imageView startAnimatingWithCompletionBlock:^(BOOL success) {
-        self.mainButton.imageView.image = [sprites lastObject];
         if (!expand) {
             [self resetMainButton];
         }
