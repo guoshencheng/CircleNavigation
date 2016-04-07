@@ -242,6 +242,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 - (void)removeAllItems {
     for (int i = 0; i < self.items.count; i ++) {
         CircleNavigationItem *item = [self.items objectAtIndex:i];
+        [item pop_removeAllAnimations];
         if (item && [item superview]) {
             [item removeFromSuperview];
         }
