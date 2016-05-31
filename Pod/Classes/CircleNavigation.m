@@ -193,6 +193,9 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 #pragma mark - Actions
 
 - (void)didClickMainButton {
+    if ([self.delegate respondsToSelector:@selector(circleNavigationDidClickIcon:)]) {
+        [self.delegate circleNavigationDidClickIcon:self];
+    }
     [self showHideBackgroundButton:self.isPackUp];
     if (self.isPackUp) {
         for (CircleNavigationItem *item in self.items) {

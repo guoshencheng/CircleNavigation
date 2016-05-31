@@ -62,7 +62,7 @@ typedef void (^Block)(BOOL success);
 @protocol CircleNavigationDelegate <NSObject>
 @optional
 - (void)circleNavigation:(CircleNavigation *)circleNavigation didClickItemAtIndex:(NSInteger)index;
-
+- (void)circleNavigationDidClickIcon:(CircleNavigation *)circleNavigation;
 @end
 
 @protocol CircleNavigationDatasource <NSObject>
