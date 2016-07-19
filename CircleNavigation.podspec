@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "CircleNavigation"
-  s.version          = "1.4.4"
+  s.version          = "1.4.5"
   s.summary          = "A Circle Navigation View " 
 
 # This description is used to generate tags and improve search results.

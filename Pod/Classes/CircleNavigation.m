@@ -86,6 +86,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 
 @property (strong, nonatomic) UIButton *mainButton;
 @property (strong, nonatomic) UIButton *backgroundButton;
+@property (strong, nonatomic) UIView *maskView;
 
 @property (strong, nonatomic) NSMutableDictionary *itemModuleCache;
 @property (strong, nonatomic) NSMutableDictionary *spritesCache;
@@ -98,7 +99,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     UIView *view = [super hitTest:point withEvent:event];
-    if ([view isKindOfClass:[UIButton class]]) {
+    if ([view isKindOfClass:[UIButton class]] || view.tag == 1213) {
         return view;
     }
     return nil;
@@ -124,7 +125,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 
 - (void)reset {
     [self configureMainButton];
-    [self configureBackgroundButton];
+    [self configureMaskView];
     self.isPackUp = YES;
 }
 
@@ -196,7 +197,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
     if ([self.delegate respondsToSelector:@selector(circleNavigationDidClickIcon:)]) {
         [self.delegate circleNavigationDidClickIcon:self];
     }
-    [self showHideBackgroundButton:self.isPackUp];
+    [self showHideMaskView:self.isPackUp];
     if (self.isPackUp) {
         for (CircleNavigationItem *item in self.items) {
             [item animateToTargetPostion];
@@ -210,7 +211,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 }
 
 - (void)didClickBackgroundButton {
-    [self showHideBackgroundButton:NO];
+    [self showHideMaskView:NO];
     for (CircleNavigationItem *item in self.items) {
         [item animateToOriginPostion];
     }
@@ -229,7 +230,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 }
 
 - (void)setup {
-    [self addBackgroundButton];
+    [self addMaskView];
     [self addMainButton];
     [self reset];
 }
@@ -237,7 +238,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 - (void)clear {
     if (self.items) {
         [self removeAllItems];
-        self.backgroundButton.hidden = YES;
+        self.maskView.hidden = YES;
         self.items = nil;
     }
 }
@@ -303,30 +304,43 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 
 #pragma mark -- BackgroundButton
 
-- (void)addBackgroundButton {
-    self.backgroundButton = [[UIButton alloc] init];
-    [self addSubview:self.backgroundButton];
-    [self.backgroundButton addTarget:self action:@selector(didClickBackgroundButton) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)configureBackgroundButton {
-    self.backgroundButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
-    [self.backgroundButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+- (void)addMaskView {
+    self.maskView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.maskView.userInteractionEnabled = YES;
+    self.maskView.tag = 1213;
+    UIVisualEffectView *maskView = [[UIVisualEffectView alloc] init];
+    maskView.userInteractionEnabled = NO;
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    [maskView setEffect:blurEffect];
+    [self.maskView addSubview:maskView];
+    [maskView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(@0);
         make.trailing.equalTo(@0);
         make.top.equalTo(@0);
         make.bottom.equalTo(@0);
     }];
-    self.backgroundButton.hidden = YES;
+    [self addSubview:self.maskView];
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didClickBackgroundButton)];
+    [self.maskView addGestureRecognizer:gesture];
 }
 
-- (void)showHideBackgroundButton:(BOOL)show {
-    self.backgroundButton.hidden = NO;
+- (void)configureMaskView {
+    [self.maskView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(@0);
+        make.trailing.equalTo(@0);
+        make.top.equalTo(@0);
+        make.bottom.equalTo(@0);
+    }];
+    self.maskView.hidden = YES;
+}
+
+- (void)showHideMaskView:(BOOL)show {
+    self.maskView.hidden = NO;
     [UIView animateWithDuration:0.2 animations:^{
-        self.backgroundButton.alpha = show ? 1 : 0;
+        self.maskView.alpha = show ? 1 : 0;
     } completion:^(BOOL finished) {
         if (finished) {
-            self.backgroundButton.hidden = !show;
+            self.maskView.hidden = !show;
         }
     }];
 }
@@ -338,7 +352,7 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
         [item animateToOriginPostion];
     }
     self.isPackUp = YES;
-    [self showHideBackgroundButton:NO];
+    [self showHideMaskView:NO];
     __weak typeof(self) weakSelf = self;
     circleNavigationItem.packUpAnimationCompletion = ^(NSInteger index) {
         if ([weakSelf.delegate respondsToSelector:@selector(circleNavigation:didClickItemAtIndex:)]) {
