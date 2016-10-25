@@ -34,7 +34,7 @@
     [anim setRepeatCount:self.animationRepeatCount];
     [anim setDuration:self.animationDuration];
     anim.delegate = self;
-    
+
     CALayer *ImageLayer = self.layer;
     [ImageLayer addAnimation:anim forKey:nil];
 }
@@ -210,6 +210,9 @@ NSArray *getCGImagesArray(NSArray* UIImagesArray) {
 }
 
 - (void)didClickBackgroundButton {
+    if ([self.delegate respondsToSelector:@selector(circleNavigationDidClickIcon:)]) {
+        [self.delegate circleNavigationDidClickIcon:self];
+    }
     [self showHideBackgroundButton:NO];
     for (CircleNavigationItem *item in self.items) {
         [item animateToOriginPostion];
