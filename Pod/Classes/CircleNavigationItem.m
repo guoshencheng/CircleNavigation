@@ -8,7 +8,8 @@
 
 #import "CircleNavigationItem.h"
 #import "CircleNavigation.h"
-
+#import "Masonry.h"
+#import "POP.h"
 
 static NSString *const kCircleNavigationPopPropertyName = @"pop.animtion.circlenavigation";
 static NSString *const kCircleNavigationPopSpringAnimation = @"circle_navigation_popSpringAnimation";
@@ -25,6 +26,12 @@ static NSString *const kCircleNavigationPopSpringAnimation = @"circle_navigation
 @property (strong, nonatomic) MASConstraint *leftConstraint;
 @property (strong, nonatomic) MASConstraint *bottomConstraint;
 @property (assign, nonatomic) CGFloat transitionProgress;
+
+@end
+
+@interface POPAnimatableProperty (CircleNavigationItem)
+
++ (POPAnimatableProperty *) mas_offsetProperty;
 
 @end
 

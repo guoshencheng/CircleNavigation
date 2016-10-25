@@ -1,8 +1,8 @@
 PODS:
-  - CircleNavigation (0.1.0):
+  - CircleNavigation (1.4.7):
     - Masonry
     - pop
-  - Masonry (0.6.4)
+  - Masonry (1.0.2)
   - pop (1.0.9)
 
 DEPENDENCIES:
@@ -13,8 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CircleNavigation: 9793d77ee24b1cebf7da4dbdaa11f362f66f5dfa
-  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  CircleNavigation: 25c794b089a9b1e5adefc7280b5024cc129cf104
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: d6481fa8cd492698a436ee060e81c13122f3a345
+
+COCOAPODS: 1.1.1

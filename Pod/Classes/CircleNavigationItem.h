@@ -7,16 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Masonry.h"
-#import "POP.h"
+
+@class Masonry;
+@class POP;
 
 @protocol CircleNavigationItemDelegate;
-
-@interface POPAnimatableProperty (Masonry)
-
-+ (POPAnimatableProperty *) mas_offsetProperty;
-
-@end
 
 typedef void(^PackUpAnimationCompletion)(NSInteger index);
 
