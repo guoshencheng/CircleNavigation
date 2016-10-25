@@ -7,6 +7,7 @@
 //
 
 #import "Masonry.h"
+#import "POP.h"
 #import "CircleNavigation.h"
 #import <objc/runtime.h>
 
